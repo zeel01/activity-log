@@ -1,0 +1,35 @@
+.edit {
+	form {
+		display: grid;
+
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr auto 1fr;
+
+		gap: .25em;
+
+		grid-template-areas:
+			"name name"
+			"start end"
+			"description description"
+			"submit delete";
+
+		[name="name"] {
+			grid-area: name;
+		}
+		[name="start_time"] {
+			grid-area: start;
+		}
+		[name="end_time"] {
+			grid-area: end;
+		}
+		[name="description"] {
+			grid-area: description;
+		}
+		[name="submit"] {
+			grid-area: submit;
+		}
+		[name="delete"] {
+			grid-area: delete;
+		}
+	}
+}

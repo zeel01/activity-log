@@ -1,0 +1,47 @@
+@use "sass:color";
+
+body {
+	background-color: $background-primary;
+
+	font-family: 'Open Sans', sans-serif;
+	
+	color: white;
+
+	display: grid;
+	grid-template-rows: 1fr auto 1fr;
+	grid-template-columns: 40em;
+
+	justify-content: center;
+}
+
+a, a:link {
+	color: currentColor;
+	text-decoration: none;
+	border-bottom: .01em dashed currentColor;
+
+	&:hover {
+		text-shadow: 0 0 .1em $blue-medium;
+		border-bottom: .01em solid currentColor;
+	}
+}
+
+h1, h2, h3 {
+	margin: 0;
+	color: $blue-medium;
+	text-shadow: 0 0 .2em #0007;
+	font-family: 'Syncopate', sans-serif;
+}
+h1 { 
+	font-size: 1.8em;
+	color: darken($blue-medium, 10);
+}
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1em; }
+h6 { font-size: .9em; }
+
+h4, h5, h6 {
+	margin: 0;
+	font-family: 'Krona One', sans-serif
+}
