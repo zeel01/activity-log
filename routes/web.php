@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActivityController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ActivityController::class, 'index']);
+
+Route::resource('activities', ActivityController::class)
+	->names([
+		'new' => 'activities.create'
+	])
+	->missing(function (Request $request) {
+		return Redirect::route('activities.index');
+	});
