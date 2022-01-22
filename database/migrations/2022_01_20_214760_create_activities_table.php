@@ -17,7 +17,6 @@ class CreateActivitiesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string("name");
-            $table->date("date");
             $table->dateTime("start_time");
             $table->dateTime("end_time");
             $table->foreignId("category_id")->constrained();

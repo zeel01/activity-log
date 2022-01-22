@@ -17,10 +17,9 @@ Each table contains the standard id and timestamp fields from Eloquent.
 | Column | Type | Description |
 | ------ | ---- | ----------- |
 | `name` | string | The name of the activity |
-| `date` | date | The date of the activity |
 | `start_time` | dateTime | The start time of the activity |
 | `end_time` | dateTime | The end time of the activity |
-| `category` | foreignId | The category of the activity |
+| `category_id` | foreignId | The category of the activity |
 | `description` | text | The description of the activity |
 
 
