@@ -11,7 +11,7 @@
             <h1>Activity Log</h1>
             <nav>
                 <a href="/activities">Activities</a>
-                <a href="/activities/create">Create Activiy</a>
+                <a href="/activities/create">Create Activity</a>
             </nav>
         </header>
 		<main class="{{ $class }}">

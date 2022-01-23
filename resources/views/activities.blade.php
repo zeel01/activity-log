@@ -7,7 +7,6 @@
 				<th>Name</th>
 				<th>Start Time</th>
 				<th>End Time</th>
-				<th>Category</th>
 				<th>Description</th>
 			</tr>
 		</thead>
@@ -21,7 +20,6 @@
 					</td>
 					<td>{{ $activity->start_time }}</td>
 					<td>{{ $activity->end_time }}</td>
-					<td>{{ $activity->category_name }}</td>
 					<td>{{ $activity->description }}</td>
 				</tr>
 			@endforeach

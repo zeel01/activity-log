@@ -17,9 +17,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::select('activities.*', 'categories.name as category_name')
-            ->join('categories', 'activities.category_id', '=', 'categories.id')
-            ->get();
+        $activities = Activity::all();
 
         return view('activities', ['activities' => $activities]);
     }
@@ -35,7 +33,6 @@ class ActivityController extends Controller
             'name' => 'New Activity',
             'start_time' => date('Y-m-d H:i:s'),
             'end_time' => date('Y-m-d H:i:s', strtotime('+1 hour')),
-            'category_id' => 1,
             'description' => ''
         ]);
 
@@ -91,7 +88,6 @@ class ActivityController extends Controller
                 'name' => $request->name ?? '',
                 'start_time' => date('Y-m-d H:i:s', strtotime($activity->start_time)),
                 'end_time' => date('Y-m-d H:i:s', strtotime($activity->end_time)),
-                //'category_id' => $request->category_id,
                 'description' => $request->description ?? ''
             ]);
 
