@@ -1,5 +1,7 @@
 @use "sass:color";
 
+$width: 40em;
+
 body {
 	background-color: $background-primary;
 
@@ -8,10 +10,18 @@ body {
 	color: white;
 
 	display: grid;
-	grid-template-rows: 1fr auto 1fr;
-	grid-template-columns: 40em;
+	grid-template-rows: auto auto auto;
+	grid-template-columns: 1fr;
+
+	gap: 1em;
 
 	justify-content: center;
+}
+
+@media (min-width: $width) {
+	body {
+		grid-template-columns: $width;
+	}
 }
 
 a, a:link {
@@ -22,6 +32,45 @@ a, a:link {
 	&:hover {
 		text-shadow: 0 0 .1em $blue-medium;
 		border-bottom: .01em solid currentColor;
+	}
+}
+
+button {
+	border: none;
+	color: inherit;
+	cursor: pointer;
+
+	position: relative;
+	
+	&:hover {
+		&::before {
+			position: absolute;
+			z-index: 1;
+			pointer-events: none;
+			content: ' ';
+			top: 0; left: 0; bottom: 0; right: 0;
+			background-color: #0002;
+		}
+	}
+}
+input, textarea {
+	border: none;
+	background-color: transparent;
+	color: inherit;
+
+	&:focus {
+		outline: none;
+		background-color: #0001;
+	}
+	&::selection {
+		background-color: $blue-dark-highlight;
+	}
+}
+
+a, button {
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 .3em $blue-light;
 	}
 }
 
@@ -44,4 +93,43 @@ h6 { font-size: .9em; }
 h4, h5, h6 {
 	margin: 0;
 	font-family: 'Krona One', sans-serif
+}
+
+header, main, footer {
+	background-color: $background-secondary;
+	padding: .75em;
+	border-radius: .75em;
+	box-shadow: 0 .2em .5em black;
+}
+
+header {
+	h1 {
+		font-size: 2.2em;
+	}
+	nav {
+		display: flex;
+		flex-direction: row;
+		gap: 1ch;
+
+		a:link {
+			background-color: #0001;
+			border: none;
+			display: flex;
+			padding: .3em .5em;
+			border-radius: .5em;
+
+			&:hover {
+				background-color: #0002;
+				border: none;
+			}
+		}
+	}
+}
+
+footer {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	color: $blue-medium;
+	text-shadow: .1em .1em .1em $background-primary;
 }

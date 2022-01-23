@@ -4,11 +4,17 @@ body {
   font-family: "Open Sans", sans-serif;
   color: white;
   display: grid;
-  grid-template-rows: 1fr auto 1fr;
-  grid-template-columns: 40em;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+  gap: 1em;
   justify-content: center;
 }
 
+@media (min-width: 40em) {
+  body {
+    grid-template-columns: 40em;
+  }
+}
 a, a:link {
   color: currentColor;
   text-decoration: none;
@@ -17,6 +23,45 @@ a, a:link {
 a:hover, a:link:hover {
   text-shadow: 0 0 0.1em #4277A5;
   border-bottom: 0.01em solid currentColor;
+}
+
+button {
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+button:hover::before {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  content: " ";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0002;
+}
+
+input, textarea {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
+input:focus, textarea:focus {
+  outline: none;
+  background-color: #0001;
+}
+input::-moz-selection, textarea::-moz-selection {
+  background-color: #074068;
+}
+input::selection, textarea::selection {
+  background-color: #074068;
+}
+
+a:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0.3em #B1C9E2;
 }
 
 h1, h2, h3 {
@@ -56,28 +101,163 @@ h4, h5, h6 {
   font-family: "Krona One", sans-serif;
 }
 
+header, main, footer {
+  background-color: #3b3b3b;
+  padding: 0.75em;
+  border-radius: 0.75em;
+  box-shadow: 0 0.2em 0.5em black;
+}
+
+header h1 {
+  font-size: 2.2em;
+}
+header nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1ch;
+}
+header nav a:link {
+  background-color: #0001;
+  border: none;
+  display: flex;
+  padding: 0.3em 0.5em;
+  border-radius: 0.5em;
+}
+header nav a:link:hover {
+  background-color: #0002;
+  border: none;
+}
+
+footer {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  color: #4277A5;
+  text-shadow: 0.1em 0.1em 0.1em #222222;
+}
+
+.list h2 {
+  padding: 0.5em 0.5em 0.3em 0.5em;
+  border-radius: 0.5em;
+  color: #B1C9E2;
+  background-color: #002E4F;
+  margin-bottom: 0.5em;
+  box-shadow: 0 0.1em 0.1em black;
+  display: flex;
+  flex-direction: row;
+}
+.list h2 span {
+  flex-grow: 1;
+}
+.list h2 a {
+  flex-shrink: 1;
+  border: none;
+}
+.list h2 a:hover {
+  border: none;
+  color: white;
+  text-shadow: 0 0 0.5em #B1C9E2;
+}
+
+.activities {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.activities .activity-record {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: none;
+  gap: 1ch;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: #002E4F;
+  box-shadow: 0 0 0.3em black;
+}
+.activities .activity-record > * {
+  box-shadow: 0 0 0.2em black;
+}
+.activities .activity-record:hover {
+  border: none;
+  background-color: #074068;
+  box-shadow: 0 0.1em 0.5em #222222;
+}
+
+.activity > * {
+  display: flex;
+  flex-direction: column;
+  padding: 0.3em 1ch;
+  border-radius: 0.5em;
+}
+.activity > * .label, .activity > * label {
+  font-size: 0.5em;
+  color: lightgray;
+  font-family: "Krona One", sans-serif;
+}
+.activity input, .activity textarea {
+  border-radius: 0.5em;
+  margin-left: -3px;
+  margin-right: -3px;
+}
+.activity .name {
+  background-color: #4277A5;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+.activity input[name=name] {
+  font-size: 1.3em;
+  font-family: "Syncopate", sans-serif;
+}
+.activity .time {
+  background-color: #7b93ad;
+  flex-shrink: 0;
+}
+.activity .description {
+  background-color: #2c5282;
+  flex-basis: 100%;
+}
+.activity button {
+  place-items: center;
+  font-family: "Krona One", sans-serif;
+}
+
 .edit form {
   display: grid;
+  gap: 0.75em;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr auto 1fr;
-  gap: 0.25em;
-  grid-template-areas: "name name" "start end" "description description" "submit delete";
+  grid-template-rows: repeat(5, auto);
+  grid-template-areas: "name name" "start start" "end end" "description description" "submit delete";
 }
-.edit form [name=name] {
+@media (min-width: 412px) {
+  .edit form {
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas: "name name" "start end" "description description" "submit delete";
+  }
+}
+.edit form > * {
+  box-shadow: 0 0 0.2em #222222;
+}
+.edit form .name {
   grid-area: name;
 }
-.edit form [name=start_time] {
+.edit form .start {
   grid-area: start;
 }
-.edit form [name=end_time] {
+.edit form .end {
   grid-area: end;
 }
-.edit form [name=description] {
+.edit form .description {
   grid-area: description;
 }
 .edit form [name=submit] {
   grid-area: submit;
+  background-color: #4277A5;
 }
 .edit form [name=delete] {
   grid-area: delete;
+  background-color: #002E4F;
 }
