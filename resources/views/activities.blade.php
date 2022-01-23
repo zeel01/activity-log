@@ -1,28 +1,18 @@
 <x-layout class="list">
 	<x-slot name="title">Activities</x-slot>
-	<h2>Activities</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Start Time</th>
-				<th>End Time</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
+	<h2>
+		<span>Activities</span>
+		<a href="{{ route('activities.create') }}">+</a>
+	</h2>
+	@if ($activities->count() > 0)
+		<ul class="activities">
 			@foreach($activities as $activity)
-				<tr>
-					<td>
-						<a href="/activities/{{ $activity->id }}">
-							{{ $activity->name }}
-						</a>
-					</td>
-					<td>{{ $activity->start_time }}</td>
-					<td>{{ $activity->end_time }}</td>
-					<td>{{ $activity->description }}</td>
-				</tr>
+				<x-activity-record :activity="$activity" />
 			@endforeach
-		</tbody>
-	</table>
+		</ul>
+	@else
+		<div class="activities">
+			<a class="activity-record" href="{{ route('activities.create') }}">No Activities. Click to create.</a>
+		</div>
+	@endif
 </x-layout>
