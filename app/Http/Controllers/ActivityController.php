@@ -17,7 +17,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::all();
+        $activities = Activity::orderBy('start_time', 'asc')->get();
 
         return view('activities', ['activities' => $activities]);
     }
@@ -86,8 +86,8 @@ class ActivityController extends Controller
         $updated = Activity::where('id', $activity->id)
             ->update([
                 'name' => $request->name ?? '',
-                'start_time' => date('Y-m-d H:i:s', strtotime($activity->start_time)),
-                'end_time' => date('Y-m-d H:i:s', strtotime($activity->end_time)),
+                'start_time' => date('Y-m-d H:i:s', strtotime($request->start_time)),
+                'end_time' => date('Y-m-d H:i:s', strtotime($request->end_time)),
                 'description' => $request->description ?? ''
             ]);
 
