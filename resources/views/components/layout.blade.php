@@ -8,17 +8,22 @@
     </head>
     <body>
         <header>
-            <h1>Activity Log</h1>
+            <a href="{{ route('activities.index') }}">
+                <h1>Activity Log</h1>
+            </a>
             <nav>
-                <a href="/activities">Activities</a>
-                <a href="/activities/create">Create Activity</a>
+                <a href="{{ route('activities.index') }}">Activity List</a>
+                <a href="{{ route('activities.create') }}">Create New Activity</a>
             </nav>
         </header>
 		<main class="{{ $class }}">
             {{ $slot }}
         </main>
         <footer>
-
+            <div class="copyright">Copyright &copy; {{ date('Y') }} Josh Olsen</div>
+            <div class="links">
+                <a href="https://lordzeel.com">lordzeel.com</a>
+            </div>
         </footer>
     </body>
 </html>
