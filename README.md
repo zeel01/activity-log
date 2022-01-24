@@ -9,6 +9,18 @@ Activity log is an application for tracking your own activities. It can be used 
 
 ## Technical Details
 
+This is a simple Laravel application meant to test the basic features of the framework utilizing routes, database models, and Blade templates.
+
+### Routes
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| GET | `/activities` | List all activities |
+| GET | `/activities/create` | Create a new activity |
+| GET | `/activities/{id}` | Show an activity |
+| PUT | `/activities/{id}` | Update an activity |
+| DELETE | `/activities/{id}` | Remove an activity |
+
 ### Database
 
 #### Tables
