@@ -23,6 +23,8 @@ This is a simple Laravel application meant to test the basic features of the fra
 
 ### Database
 
+The database uses MySQL, a new database can be initialized by running `php artisan migrate`.
+
 #### Tables
 
 Each table contains the standard id and timestamp fields from Eloquent.
@@ -35,3 +37,7 @@ Each table contains the standard id and timestamp fields from Eloquent.
 | `start_time` | dateTime | The start time of the activity |
 | `end_time` | dateTime | The end time of the activity |
 | `description` | text | The description of the activity |
+
+### Stylesheets
+
+Styles are written in Sass, use `npm run watch` to compile and watch for changes.
